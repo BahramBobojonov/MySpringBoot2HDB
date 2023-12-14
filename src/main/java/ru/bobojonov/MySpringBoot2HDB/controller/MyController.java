@@ -7,6 +7,7 @@ import ru.bobojonov.MySpringBoot2HDB.entity.Student;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 @RestController
 @RequestMapping("/api")
 public class MyController {
