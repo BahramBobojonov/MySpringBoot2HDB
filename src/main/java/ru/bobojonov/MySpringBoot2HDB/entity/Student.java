@@ -3,6 +3,7 @@ package ru.bobojonov.MySpringBoot2HDB.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 @Setter
 @Getter
@@ -25,4 +26,15 @@ public class Student {
 
     @Column(name = "age")
     private int age;
+
+    public Student() {
+
+    }
+
+    public Student(String name, String surname, String faculty, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.faculty = faculty;
+        this.age = age;
+    }
 }

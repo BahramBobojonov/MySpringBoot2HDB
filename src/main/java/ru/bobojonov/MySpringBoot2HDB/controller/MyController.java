@@ -2,10 +2,11 @@ package ru.bobojonov.MySpringBoot2HDB.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.bobojonov.MySpringBoot2HDB.entity.Student;
 import ru.bobojonov.MySpringBoot2HDB.service.StudentService;
+import ru.bobojonov.MySpringBoot2HDB.entity.Student;
 import java.util.List;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 @RestController
 @RequestMapping("/api")
 public class MyController {
@@ -24,14 +25,23 @@ public class MyController {
     }
 
     @PostMapping("/students")
-    public Student saveStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
+    public ResponseEntity<String> saveStudent(@RequestBody Student student) {
+        Student savedStudent = studentService.saveStudent(student);
+        if (savedStudent != null) {
+            return new ResponseEntity<>("Student saved successfully", HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("Failed to save student", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/students")
-    public Student updateStudent(@RequestBody Student student) {
-        studentService.saveStudent(student);
-        return student;
+    public ResponseEntity<String> updateStudent(@RequestBody Student student) {
+        Student updatedStudent = studentService.saveStudent(student);
+        if (updatedStudent != null) {
+            return new ResponseEntity<>("Student updated successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Failed to update student", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/students/{id}")

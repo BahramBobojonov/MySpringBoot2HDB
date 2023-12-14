@@ -2,7 +2,6 @@ package ru.bobojonov.MySpringBoot2HDB.service;
 
 import org.springframework.stereotype.Service;
 import ru.bobojonov.MySpringBoot2HDB.entity.Student;
-
 import java.util.List;
 
 @Service
